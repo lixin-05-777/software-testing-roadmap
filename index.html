@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>软件测试实习路线 — 零基础 30 天</title>
+<style>
+  :root {
+    --bg: #0a0a10;
+    --surface: #13131f;
+    --surface2: #1c1c30;
+    --border: #282845;
+    --text: #e8e8f0;
+    --text2: #9090b0;
+    --accent: #7c5ce7;
+    --accent2: #b39dfb;
+    --green: #00d6a0;
+    --orange: #ffa040;
+    --pink: #ff6b9d;
+    --radius: 12px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .nav {
+    position:sticky;top:0;z-index:100;
+    background:rgba(10,10,16,0.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+    padding:0 20px;
+  }
+  .nav-inner {
+    max-width:780px;margin:0 auto;
+    display:flex;gap:4px;overflow-x:auto;
+    padding:10px 0;
+  }
+  .nav a {
+    color:var(--text2);text-decoration:none;
+    font-size:12px;font-weight:600;
+    padding:6px 12px;border-radius:16px;
+    white-space:nowrap;transition:all 0.2s;
+  }
+  .nav a:hover,.nav a.active {color:#fff;background:var(--accent);}
+  .container {max-width:780px;margin:0 auto;padding:30px 20px 80px;}
+  .hero {text-align:center;padding:30px 0 40px;}
+  .hero .emoji {font-size:48px;margin-bottom:16px;}
+  .hero h1 {
+    font-size:36px;font-weight:900;letter-spacing:-0.5px;
+    background:linear-gradient(135deg,var(--accent2),var(--pink));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    margin-bottom:12px;
+  }
+  .hero p {color:var(--text2);font-size:16px;max-width:460px;margin:0 auto;}
+  .facts {
+    display:flex;gap:12px;justify-content:center;
+    margin-bottom:48px;flex-wrap:wrap;
+  }
+  .fact {
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);padding:18px 22px;
+    text-align:center;min-width:110px;
+  }
+  .fact .n {
+    font-size:30px;font-weight:900;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .fact .l {font-size:12px;color:var(--text2);margin-top:4px;}
+  .before {
+    background:linear-gradient(135deg,#1a1830,#131320);
+    border:1px solid var(--border);border-radius:var(--radius);
+    padding:24px 28px;margin-bottom:48px;
+  }
+  .before h3{color:var(--accent2);font-size:16px;margin-bottom:10px;}
+  .before ul{list-style:none;}
+  .before li{color:var(--text2);font-size:14px;padding:4px 0;}
+  .before li::before{content:"✓ ";color:var(--green);font-weight:800;}
+  .week {margin-bottom:48px;scroll-margin-top:80px;}
+  .week-head {
+    display:flex;align-items:center;gap:14px;margin-bottom:20px;
+  }
+  .week-num {
+    width:44px;height:44px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:900;font-size:20px;flex-shrink:0;
+  }
+  .w1 .week-num{background:#1d1830;color:var(--accent2);}
+  .w2 .week-num{background:#182f1d;color:var(--green);}
+  .w3 .week-num{background:#2f2018;color:var(--orange);}
+  .w4 .week-num{background:#301820;color:var(--pink);}
+  .week-head h2{font-size:20px;font-weight:800;}
+  .week-head .sub{font-size:13px;color:var(--text2);margin-left:auto;}
+  .day {
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);padding:18px 22px;margin-bottom:10px;
+    transition:border-color 0.2s;display:flex;gap:14px;align-items:flex-start;
+  }
+  .day:hover{border-color:var(--accent);}
+  .day-num {
+    width:32px;height:32px;background:var(--surface2);
+    border-radius:10px;display:flex;align-items:center;
+    justify-content:center;font-size:13px;font-weight:800;
+    color:var(--accent2);flex-shrink:0;
+  }
+  .day-body{flex:1;}
+  .day-title{font-weight:700;font-size:15px;margin-bottom:4px;}
+  .day-desc{color:var(--text2);font-size:13px;line-height:1.6;}
+  .day-time{
+    font-size:11px;color:var(--accent2);margin-top:6px;
+    background:var(--surface2);display:inline-block;
+    padding:2px 10px;border-radius:8px;
+  }
+  .day .tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:5px;}
+  .day .tag{
+    background:var(--surface2);font-size:11px;
+    padding:3px 9px;border-radius:6px;color:var(--text2);
+  }
+  .interview {
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);padding:28px;margin-top:48px;
+    scroll-margin-top:80px;
+  }
+  .interview h2{font-size:20px;font-weight:800;margin-bottom:6px;}
+  .interview .sub{color:var(--text2);font-size:13px;margin-bottom:20px;}
+  .qa{
+    border:1px solid var(--border);border-radius:var(--radius);
+    margin-bottom:8px;overflow:hidden;
+  }
+  .qa.open{border-color:var(--accent);}
+  .qa-q{
+    display:flex;align-items:center;padding:14px 18px;
+    cursor:pointer;user-select:none;gap:12px;
+  }
+  .qa-q:hover{background:var(--surface2);}
+  .qa-q .n{
+    width:26px;height:26px;background:var(--accent);
+    color:#fff;border-radius:8px;display:flex;
+    align-items:center;justify-content:center;
+    font-size:12px;font-weight:800;flex-shrink:0;
+  }
+  .qa-q .t{flex:1;font-size:14px;font-weight:600;}
+  .qa-q .arr{font-size:16px;color:var(--text2);transition:transform 0.3s;}
+  .qa.open .arr{transform:rotate(180deg);color:var(--accent2);}
+  .qa-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease;}
+  .qa.open .qa-a{max-height:700px;}
+  .qa-a-inner{
+    padding:0 18px 18px 56px;font-size:13px;
+    color:var(--text2);line-height:1.7;
+  }
+  .qa-a-inner strong{color:var(--text);}
+  .qa-a-inner code{
+    background:var(--surface2);color:var(--green);
+    padding:2px 7px;border-radius:5px;font-size:12px;
+  }
+  .after{
+    background:linear-gradient(135deg,#1a3020,#132020);
+    border:1px solid #284528;border-radius:var(--radius);
+    padding:24px 28px;margin-top:32px;
+  }
+  .after h3{color:var(--green);font-size:16px;margin-bottom:10px;}
+  .after ul{margin-top:10px;padding-left:18px;color:var(--text2);font-size:14px;}
+  .after li{margin-bottom:6px;}
+  .cta{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);padding:24px 28px;margin-top:32px;
+    text-align:center;
+  }
+  .cta h3{font-size:16px;margin-bottom:8px;}
+  .cta p{color:var(--text2);font-size:14px;}
+  .cheat{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);padding:24px 28px;margin-top:32px;
+    scroll-margin-top:80px;
+  }
+  .cheat h2{font-size:18px;font-weight:800;margin-bottom:16px;}
+  .cheat table{width:100%;border-collapse:collapse;font-size:13px;}
+  .cheat td,.cheat th{
+    padding:10px 14px;text-align:left;
+    border-bottom:1px solid var(--border);
+  }
+  .cheat th{color:var(--accent2);font-weight:700;}
+  .cheat td{color:var(--text2);}
+  .cheat code{
+    background:var(--surface2);color:var(--green);
+    padding:2px 7px;border-radius:5px;font-size:12px;
+  }
+  footer{
+    text-align:center;margin-top:64px;padding-top:24px;
+    border-top:1px solid var(--border);
+    color:var(--text2);font-size:12px;
+  }
+  @media(max-width:600px){
+    .hero h1{font-size:26px;}
+    .container{padding:20px 14px 60px;}
+    .facts{gap:8px;}
+    .fact{padding:14px 16px;min-width:90px;}
+    .fact .n{font-size:24px;}
+    .day{flex-direction:column;gap:8px;}
+  }
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+<a href="#w1">第1周</a><a href="#w2">第2周</a><a href="#w3">第3周</a><a href="#w4">第4周</a><a href="#interview">面试问答</a><a href="#cheat">速查表</a>
+</div></nav>
+<div class="container">
+
+<div class="hero">
+<div class="emoji">🧪</div>
+<h1>零基础→软件测试实习</h1>
+<p>30 天，每天 2-3 小时。不写代码，不搞自动化，纯手工功能测试路线。</p>
+</div>
+
+<div class="facts">
+<div class="fact"><div class="n">30</div><div class="l">天</div></div>
+<div class="fact"><div class="n">0</div><div class="l">代码基础</div></div>
+<div class="fact"><div class="n">2h</div><div class="l">每天学习</div></div>
+<div class="fact"><div class="n">7</div><div class="l">面试题</div></div>
+</div>
+
+<div class="before">
+<h3>开始之前，先准备好：</h3>
+<ul>
+<li>一台电脑（Windows/Mac 都行，不用太好）</li>
+<li>装好 <strong>Postman</strong>（免费，postman.com/downloads）</li>
+<li>装好 <strong>Charles</strong>（免费版够用，charlesproxy.com）</li>
+<li>装好 <strong>MySQL</strong> 或至少注册一个在线 SQL 练习站（sqlzoo.net）</li>
+<li>注册 <strong>GitHub</strong> 账号（简历上放项目用）</li>
+<li>心态：<strong>这 30 天不需要聪明，只需要坚持。</strong></li>
+</ul>
+</div>
+
+<div class="week w1" id="w1">
+<div class="week-head"><div class="week-num">1</div><h2>第一周：搞懂"测试到底在干嘛"</h2><span class="sub">第 1–7 天</span></div>
+<div class="day"><div class="day-num">1</div><div class="day-body"><div class="day-title">软件测试是什么？</div><div class="day-desc">别急着学技术。先搞清楚：测试岗位到底干嘛？和开发什么区别？看 2 篇知乎/B站入门文章。关键词：软件测试是什么、测试日常工作。</div><div class="day-time">⏱ 1.5 小时</div></div></div>
+<div class="day"><div class="day-num">2</div><div class="day-body"><div class="day-title">黑盒 vs 白盒 vs 灰盒</div><div class="day-desc">功能测试属于"黑盒测试"——不看代码，只看功能对不对。理解三个概念，能用自己的话说出来就行。</div><div class="day-time">⏱ 1.5 小时</div><div class="tags"><span class="tag">黑盒</span><span class="tag">白盒</span><span class="tag">灰盒</span></div></div></div>
+<div class="day"><div class="day-num">3</div><div class="day-body"><div class="day-title">等价类划分法（重点！）</div><div class="day-desc">面试和实际工作最常用的方法。把输入数据分"有效"和"无效"两组，每组挑代表值测试。比如年龄输入框：有效类=1~120，无效类=&lt;0和&gt;120。拿纸笔自己画几个例子。</div><div class="day-time">⏱ 2 小时</div><div class="tags"><span class="tag">等价类</span><span class="tag">核心方法</span></div></div></div>
+<div class="day"><div class="day-num">4</div><div class="day-body"><div class="day-title">边界值分析（重点！）</div><div class="day-desc">Bug 最爱藏在边界。比如输入限制 6-18 位密码：测 5 位、6 位、18 位、19 位。把昨天等价类的例子全部加边界值验证。面试官考这个超过 80%。</div><div class="day-time">⏱ 2 小时</div><div class="tags"><span class="tag">边界值</span><span class="tag">必考</span></div></div></div>
+<div class="day"><div class="day-num">5</div><div class="day-body"><div class="day-title">因果图 + 场景法</div><div class="day-desc">多个条件组合怎么测？画因果图穷举。用户操作流程怎么测？场景法从头走到尾。今天重点是"能看懂"，不用精通。</div><div class="day-time">⏱ 1.5 小时</div><div class="tags"><span class="tag">因果图</span><span class="tag">场景法</span></div></div></div>
+<div class="day"><div class="day-num">6</div><div class="day-body"><div class="day-title">写一份测试用例（动手！）</div><div class="day-desc">找一个你常用 App 的登录功能。用 Excel 写完整的测试用例表。列：编号、测试点、前置条件、操作步骤、预期结果。写到至少 15 条。</div><div class="day-time">⏱ 2 小时</div><div class="tags"><span class="tag">动手</span><span class="tag">Excel</span></div></div></div>
+<div class="day"><div class="day-num">7</div><div class="day-body"><div class="day-title">Bug 生命周期 + 写好 Bug 报告</div><div class="day-desc">Bug 怎么流转：新建→确认→修复→验证→关闭。好报告长什么样？标题一句话说清，复现步骤编号写清楚，截图或录屏。去 App 里实际找 3 个 Bug 写下来。</div><div class="day-time">⏱ 2 小时</div><div class="tags"><span class="tag">缺陷管理</span><span class="tag">动手</span></div></div></div>
+</div>
+
+<div class="week w2" id="w2">
+<div class="week-head"><div class="week-num">2</div><h2>第二周：学会工具，能干活了</h2><span class="sub">第 8–14 天</span></div>
+<div class="day"><div class="day-num">8</div><div class="day-body"><div class="day-title">Postman 入门：发第一个请求</div><div class="day-desc">安装 Postman → 新建 Request → 调一个公开 API（比如百度搜索建议接口）→ 看返回的 JSON。今天只要会 GET 请求、看 Status Code、看 Response Body。</div><div class="day-time">⏱ 2 小时</div><div class="tags"><span class="tag">Postman</span><span class="tag">动手</span></div></div></div>
+<div class="day"><div class="day-num">9</div><div class="day-body"><div class="day-title">Postman：POST 请求 + 参数</div><div class="day-desc">GET 会了，今天学 POST。构造带 JSON Body 的请求，设置 Headers（Content-Type）。理解 Query Params 和 Body 的区别。找公开 API 练习。</div><div class="day-time">⏱ 2 小时</div><div class="tags"><span class="tag">Postman</span><span class="tag">POST</span></div></div></div>
+<div class="day"><div class="day-num">10</div><div class="day-body"><div class="day-title">学会"看"接口返回</div><div class="day-desc">调接口不是目的，<strong>验证</strong>才是。200 不一定对，404 不一定是后端的问题。学会看 Status Code（200/400/401/403/404/500）、Response 结构对不对、数据值对不对。面试官想听这个。</div><div class="day-time">⏱ 2 小时</div><div class="tags"><span class="tag">验证思维</span><span class="tag">核心</span></div></div></div>
+<div class="day"><div class="day-num">11</div><div class="day-body"><div class="day-title">Charles 抓包入门</div><div class="day-desc">装好 Charles → 开启抓包 → 浏览器随便访问网站 → 看 HTTP 请求长什么样。关注：Request URL、Method、Headers、Response Status。能抓到包、看懂结构就过关。</div><div class="day-time">⏱ 2 小时</div><div class="tags"><span class="tag">Charles</span><span class="tag">抓包</span></div></div></div>
+<div class="day"><div class="day-num">12</div><div class="day-body"><div class="day-title">用 Charles 定位"前端 or 后端"问题</div><div class="day-desc">核心技能：前端说"接口返回错了"、后端说"我返回是对的"→ 开 Charles 抓包看 Request/Response，铁证如山。今天模拟一次：故意改请求参数看返回变化。</div><div class="day-time">⏱ 1.5 小时</div><div class="tags"><span class="tag">定位问题</span><span class="tag">实战</span></div></div></div>
+<div class="day"><div class="day-num">13</div><div class="day-body"><div class="day-title">MySQL：SELECT 和 WHERE</div><div class="day-desc">数据库不会整，功能测试做不下去。今天学 <code>SELECT * FROM 表 WHERE 条件</code>。用 sqlzoo.net 做前 5 道练习题。重点是 WHERE 的各种写法。</div><div class="day-time">⏱ 2 小时</div><div class="tags"><span class="tag">MySQL</span><span class="tag">必学</span></div></div></div>
+<div class="day"><div class="day-num">14</div><div class="day-body"><div class="day-title">MySQL：JOIN 联表查询</div><div class="day-desc">面试必考！搞懂 INNER JOIN。<code>SELECT a.name, b.order_no FROM users a JOIN orders b ON a.id=b.user_id</code>。在 sqlzoo 做完 JOIN 章节。</div><div class="day-time">⏱ 2 小时</div><div class="tags"><span class="tag">JOIN</span><span class="tag">面试必考</span></div></div></div>
+</div>
+
+<div class="week w3" id="w3">
+<div class="week-head"><div class="week-num">3</div><h2>第三周：完整走一遍测试流程</h2><span class="sub">第 15–21 天</span></div>
+<div class="day"><div class="day-num">15</div><div class="day-body"><div class="day-title">选一个真实项目，读需求</div><div class="day-desc">选你熟悉的产品（淘宝、京东、微博、豆瓣），挑 3-5 个核心功能。今天只做一件事：<strong>仔细读需求</strong>——这个功能到底该是什么样？不确定的地方记下来，这就是测试的起点。</div><div class="day-time">⏱ 1.5 小时</div><div class="tags"><span class="tag">需求分析</span></div></div></div>
+<div class="day"><div class="day-num">16</div><div class="day-body"><div class="day-title">写测试计划</div><div class="day-desc">一页纸：测什么功能、不测什么、什么环境、多长时间、用什么方法。不用太正式，但要有。面试时说"会写测试计划"，面试官要求拿出来看。</div><div class="day-time">⏱ 1.5 小时</div><div class="tags"><span class="tag">测试计划</span></div></div></div>
+<div class="day"><div class="day-num">17</div><div class="day-body"><div class="day-title">设计测试用例（完整版）</div><div class="day-desc">针对你选的功能，用 Excel 写 30+ 条测试用例。覆盖：正常流程、异常流程、边界值、空值、超长输入。每条写清楚预期结果。</div><div class="day-time">⏱ 2.5 小时</div><div class="tags"><span class="tag">用例设计</span><span class="tag">核心产出</span></div></div></div>
+<div class="day"><div class="day-num">18</div><div class="day-body"><div class="day-title">执行测试</div><div class="day-desc">拿出用例表一条一条执行。实际结果和预期不一样？→ Bug。每发现一个 Bug，用 Postman/Charles 辅助定位是前端还是后端的问题。</div><div class="day-time">⏱ 2 小时</div><div class="tags"><span class="tag">执行测试</span><span class="tag">实战</span></div></div></div>
+<div class="day"><div class="day-num">19</div><div class="day-body"><div class="day-title">写 Bug 报告</div><div class="day-desc">把发现的 Bug 写成正式报告（Excel 或 Word）。每个 Bug：标题、环境、严重等级、复现步骤、预期结果、实际结果、截图。至少 5 个。</div><div class="day-time">⏱ 2 小时</div><div class="tags"><span class="tag">Bug 报告</span><span class="tag">产出</span></div></div></div>
+<div class="day"><div class="day-num">20</div><div class="day-body"><div class="day-title">搭 GitHub 作品仓库</div><div class="day-desc">把你写的测试用例和 Bug 报告上传到 GitHub。README 写清楚：什么项目、测了什么功能、发现了什么问题。这比简历上写"熟练测试设计"管用 100 倍。</div><div class="day-time">⏱ 1.5 小时</div><div class="tags"><span class="tag">GitHub</span><span class="tag">简历</span></div></div></div>
+<div class="day"><div class="day-num">21</div><div class="day-body"><div class="day-title">Linux 基础 + Git 四件套</div><div class="day-desc">Linux：<code>cd/ls/tail -f/grep/ps -ef</code>。Git：<code>clone/pull/commit/push</code>。不用精通，能跟上开发节奏就行。今天各花一小时动手敲。</div><div class="day-time">⏱ 2 小时</div><div class="tags"><span class="tag">Linux</span><span class="tag">Git</span></div></div></div>
+</div>
+
+<div class="week w4" id="w4">
+<div class="week-head"><div class="week-num">4</div><h2>第四周：冲刺面试</h2><span class="sub">第 22–28 天</span></div>
+<div class="day"><div class="day-num">22</div><div class="day-body"><div class="day-title">刷面试题：测试理论类</div><div class="day-desc">刷下面面试模块的 7 道题，确保每道都能流畅回答。重点：<strong>回答要有结构</strong>，不是背答案。"登录怎么测"→ 从 UI/功能/边界/安全/兼容性 5 个维度回答。</div><div class="day-time">⏱ 2 小时</div><div class="tags"><span class="tag">面试</span><span class="tag">理论</span></div></div></div>
+<div class="day"><div class="day-num">23</div><div class="day-body"><div class="day-title">刷面试题：工具 + SQL 类</div><div class="day-desc">Postman 怎么测 POST？Charles 怎么定位？JOIN 怎么写？SQL 查部门平均工资？统统口头讲出来，讲到流畅。</div><div class="day-time">⏱ 2 小时</div><div class="tags"><span class="tag">工具</span><span class="tag">SQL</span></div></div></div>
+<div class="day"><div class="day-num">24</div><div class="day-body"><div class="day-title">模拟面试（找人练）</div><div class="day-desc">找朋友或家人模拟面试。自我介绍→讲你做的测试项目→回答提问。录下来自己听一遍，你会发现卡壳的地方。这是最有效的准备。</div><div class="day-time">⏱ 1.5 小时</div><div class="tags"><span class="tag">模拟</span><span class="tag">关键</span></div></div></div>
+<div class="day"><div class="day-num">25</div><div class="day-body"><div class="day-title">优化简历</div><div class="day-desc">简历上必须有"项目经验"：你测了什么产品、用了什么方法、写了多少用例、发现了多少 Bug。附上 GitHub 链接。不要写"熟练掌握等价类边界值"这种空话。</div><div class="day-time">⏱ 2 小时</div><div class="tags"><span class="tag">简历</span></div></div></div>
+<div class="day"><div class="day-num">26</div><div class="day-body"><div class="day-title">敏捷流程 + 软技能</div><div class="day-desc">Scrum 三会是什么？测试人员参与哪些环节？和开发产生分歧怎么办？(见下面试题)。准备几个好听的说法。</div><div class="day-time">⏱ 1.5 小时</div><div class="tags"><span class="tag">敏捷</span><span class="tag">软技能</span></div></div></div>
+<div class="day"><div class="day-num">27</div><div class="day-body"><div class="day-title">再测一个项目（巩固）</div><div class="day-desc">选一个新的功能模块，半天走完：读需求→写用例→执行→提 Bug。这次要更快更熟练。产出加到 GitHub，简历从 1 个项目变成 2 个。</div><div class="day-time">⏱ 3 小时</div><div class="tags"><span class="tag">巩固</span></div></div></div>
+<div class="day"><div class="day-num">28</div><div class="day-body"><div class="day-title">回顾 + 自信出门</div><div class="day-desc">翻翻你这 4 周的笔记和产出：用例表、Bug 报告、GitHub 仓库。你已经从"测试是什么"走到了"能独立测一个产品"。自信出门，实习岗你完全够格。</div><div class="day-time">⏱ 1 小时</div></div></div>
+</div>
+
+<div class="after">
+<h3>🎉 30 天后你手里有什么？</h3>
+<ul>
+<li>一份完整的<strong>测试用例表</strong>（30+ 条，面试直接展示）</li>
+<li>一份<strong>Bug 报告</strong>（5+ 个真实缺陷）</li>
+<li>一个<strong>GitHub 作品仓库</strong>（简历附链接）</li>
+<li>7 道面试高频题<strong>对答如流</strong></li>
+<li>Postman + Charles + MySQL <strong>实际用过</strong></li>
+<li>最重要的是：<strong>你相信自己能做了。</strong></li>
+</ul>
+</div>
+
+<div class="interview" id="interview">
+<h2>📋 面试高频 7 问</h2>
+<div class="sub">点击问题展开答案。建议先自己想一遍再看。</div>
+
+<div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="n">1</span><span class="t">给你一个登录页面，怎么设计测试用例？</span><span class="arr">▾</span></div><div class="qa-a"><div class="qa-a-inner"><strong>分 5 个维度，每维度说 1-2 条：</strong><br><br><strong>UI：</strong>输入框对齐、占位文字、Tab 切换顺序、密码掩码。<br><strong>功能：</strong>正确账号登录、错误密码、空账号、空密码、含空格。<br><strong>边界：</strong>最大/最小长度±1、复制粘贴输入。<br><strong>安全：</strong>密码明文传输？连续输错锁定？SQL 注入 <code>' OR '1'='1</code>、XSS、退出后浏览器后退。<br><strong>兼容：</strong>Chrome/Firefox/Edge、手机浏览器。<br><br>关键不是背，是<strong>分类有条理</strong>。</div></div></div>
+
+<div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="n">2</span><span class="t">你提了 Bug，开发说不是 Bug，怎么办？</span><span class="arr">▾</span></div><div class="qa-a"><div class="qa-a-inner"><strong>5 步走：</strong><br>1. 查需求文档——有写就拿出来，铁证。<br>2. 甩证据——截图/录屏/Charles 抓包，摆数据。<br>3. 走过去聊——别在系统里吵，当面一句话说清。<br>4. 拉产品——需求模糊就找产品经理确认。<br>5. 升级——邮件抄送主管，列证据+影响。<br><br><strong>态度：对事不对人。</strong>目标是搞清楚这到底是不是缺陷。</div></div></div>
+
+<div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="n">3</span><span class="t">等价类和边界值有什么区别？举例。</span><span class="arr">▾</span></div><div class="qa-a"><div class="qa-a-inner"><strong>等价类：</strong>把输入分组，每组值效果一样，只测代表值。<br><strong>边界值：</strong>组和组之间的分界线最容易出 Bug，重点测。<br><br><strong>举例——密码限 6-18 位：</strong><br>等价类：有效类=6-18位（测10位），无效类=&lt;6位和&gt;18位。<br>边界值：5位(刚好不够)、6位(刚好够)、18位(最大)、19位(刚好超)。<br><br><strong>一句话：</strong>等价类告诉你"测哪"，边界值告诉你"重点测哪"。</div></div></div>
+
+<div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="n">4</span><span class="t">缺陷的生命周期？</span><span class="arr">▾</span></div><div class="qa-a"><div class="qa-a-inner"><code>新建</code> → <code>确认</code> → <code>修复中</code> → <code>已修复</code> → <code>已验证</code> → <code>关闭</code><br><br>分支：开发拒绝→<code>不予解决</code>；验证不通过→<code>重新打开</code>；延期→<code>暂缓</code>。<br><strong>关键：Bug 必须由提的人验证关闭，不能开发自己关。</strong></div></div></div>
+
+<div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="n">5</span><span class="t">MySQL JOIN 怎么用？写个例子。</span><span class="arr">▾</span></div><div class="qa-a"><div class="qa-a-inner"><strong>INNER JOIN</strong>（最常用）：只返回两表都匹配的行。<br><strong>LEFT JOIN：</strong>左表全保留，右表没匹配的填 NULL。<br><br><strong>写出来：</strong><br><code>SELECT u.name, o.order_no</code><br><code>FROM users u</code><br><code>JOIN orders o ON u.id = o.user_id</code><br><code>WHERE o.status = 'paid';</code><br><br>这句查出"已支付订单的用户名+订单号"。面试时口述思路比写对语法更重要。</div></div></div>
+
+<div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="n">6</span><span class="t">Postman 怎么测一个 POST 接口？</span><span class="arr">▾</span></div><div class="qa-a"><div class="qa-a-inner">1. 新建 Request，方法选 POST<br>2. 填 URL<br>3. Headers 加 <code>Content-Type: application/json</code><br>4. Body 选 raw → JSON，填数据<br>5. 点 Send<br>6. <strong>验证：</strong>Status Code 对没对？Body 结构对不对？数据值对不对？<br><br>重点是<strong>"不光会发，还会看返回结果验证"</strong>。</div></div></div>
+
+<div class="qa"><div class="qa-q" onclick="this.parentElement.classList.toggle('open')"><span class="n">7</span><span class="t">敏捷流程中测试人员参与哪些？</span><span class="arr">▾</span></div><div class="qa-a"><div class="qa-a-inner"><strong>全程参与，不是等开发做完才进场：</strong><br><br>· <strong>需求评审：</strong>需求能不能测？有验收标准吗？（此时就要提）<br>· <strong>站会：</strong>每天同步测试进度，有阻塞及时说。<br>· <strong>开发中：</strong>写用例、备数据、跑冒烟测试。<br>· <strong>评审会：</strong>展示测试结果，哪些过哪些没过。<br>· <strong>回顾会：</strong>提改进——上次为什么漏测了。<br><br>核心理念：<strong>测试从需求阶段就介入，不是等开发完了测。</strong></div></div></div>
+</div>
+
+<div class="cheat" id="cheat">
+<h2>📋 速查表</h2>
+<table>
+<tr><th>类别</th><th>命令/方法</th><th>说明</th></tr>
+<tr><td>MySQL</td><td><code>SELECT * FROM t WHERE c=1</code></td><td>最基础的查询</td></tr>
+<tr><td>MySQL</td><td><code>JOIN ... ON ...</code></td><td>两表关联，面试必考</td></tr>
+<tr><td>MySQL</td><td><code>GROUP BY ... HAVING</code></td><td>分组统计</td></tr>
+<tr><td>Linux</td><td><code>tail -f 日志 | grep ERROR</code></td><td>实时看错误</td></tr>
+<tr><td>Linux</td><td><code>ps -ef | grep 进程名</code></td><td>看进程在不在</td></tr>
+<tr><td>Git</td><td><code>clone / pull / commit / push</code></td><td>四件套</td></tr>
+<tr><td>Charles</td><td>抓包 → 看 Request/Response</td><td>定位前后端问题</td></tr>
+<tr><td>Postman</td><td>GET/POST → 看 Status Code + Body</td><td>接口调试验证</td></tr>
+<tr><td>用例方法</td><td>等价类 + 边界值</td><td>最核心的两个方法</td></tr>
+<tr><td>缺陷</td><td>新建→确认→修复→验证→关闭</td><td>生命周期</td></tr>
+</table>
+</div>
+
+<div class="cta">
+<h3>🚀 一句话</h3>
+<p>实习岗不看你会多少自动化框架，看你能不能<strong>独立把一个功能测完</strong>、<strong>写清楚 Bug</strong>、<strong>和开发说清楚问题在哪</strong>。这 30 天练的就是这三件事。</p>
+</div>
+
+<footer>软件测试实习路线 · 零基础 30 天 · 2026</footer>
+
+</div>
+<script>
+document.querySelectorAll('.qa-q').forEach(el=>el.addEventListener('click',function(){this.parentElement.classList.toggle('open');}));
+(function(){
+const s=document.querySelectorAll('.week,.interview,.cheat');
+const n=document.querySelectorAll('.nav a');
+window.addEventListener('scroll',()=>{let c='';s.forEach(e=>{if(window.scrollY>=e.offsetTop-100)c=e.id;});n.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+c));});
+})();
+</script>
+</body>
+</html>
